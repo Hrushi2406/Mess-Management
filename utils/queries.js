@@ -42,3 +42,10 @@ exports.getStudent = () => {
         text: "SELECT * FROM students"
     }
 }
+
+exports.getManagerByEmail = (userName) => {
+    return query = {
+        text: 'SELECT * FROM managers WHERE userName = $1',
+        values:[userName]
+    };
+}
