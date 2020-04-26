@@ -43,9 +43,30 @@ exports.getStudent = () => {
     }
 }
 
-exports.getManagerByEmail = (userName) => {
+exports.getManagerByEmail = (mobile_no) => {
     return query = {
-        text: 'SELECT * FROM managers WHERE userName = $1',
-        values:[userName]
+        text: 'SELECT * FROM managers WHERE manager_contact = $1',
+        values:[mobile_no]
     };
+}
+
+exports.getManagerScreen = (manager_id) => {
+    return query = {
+        text: 'SELECT * FROM monthly_details where mess_id = (SELECT mess_id FROM mess where manager_id = $1)',
+        values:[manager_id]
+    }
+}
+
+exports.getStudentDetails = (email) => {
+    return query = {
+        text: 'SELECT * FROM students INNER JOIN monthly_details ON students.id = monthly_details.id WHERE email = $1',
+        values:[email]
+    }
+}
+
+exports.getStudentById = (id) => {
+    return query = {
+        text: 'SELECT * FROM students INNER JOIN monthly_details ON students.id = monthly_details.id WHERE students.id = $1',
+        values:[id]
+    }
 }

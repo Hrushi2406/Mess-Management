@@ -14,17 +14,28 @@
 </head>
 <body>
 
-      <div class='container'>
-          <div class="spaced">
-              <p>Hrushikesh Kuklare</p>
-              <p>Total Balance</p>
-          </div>
-      </div>
-      <div class='container'>
-        <div class="spaced">
-            <p>Hrushikesh Kuklare</p>
-            <p>Mess Named</p>
+    <% if(total != null ) { %> 
+        <div class='container' style="background-color: white;">
+            <div class="spaced">
+                <h5><%= manager %></h5>
+                <h5><%= total %></h5>
+            </div>
         </div>
-    </div>
+     <% } %>
+
+    <% data.forEach(stud => { %>
+      <a href="/?id=<%=stud.id%>" style="text-decoration:none; color:black">
+            <div class='container'>
+            <div class="spaced">
+                <p><%= stud.name %></p>
+                <p><%= stud.monthly_total %></p>
+            </div>
+        </div>
+      </a>
+   <% }) %>
+
+
+
+
 </body>
 </html>
